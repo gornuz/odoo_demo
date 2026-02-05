@@ -31,7 +31,7 @@ Credits
 Authors
 ~~~~~~~
 
-- Training / Demo module (internal use).
+- Training / Demo module (internal use)
 - Odoo Community Association (OCA)
 
 Maintainers
