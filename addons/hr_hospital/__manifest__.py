@@ -4,7 +4,7 @@
     'category': 'Human Resources',
     'summary': 'Hospital management: doctors, patients, diseases, visits',
     'license': 'LGPL-3',
-    'author': 'Odoo Community Association (OCA)',
+    'author': 'Gornuzz, Odoo Community Association (OCA)',
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
