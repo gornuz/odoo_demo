@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Patient: tree -->
+    <record id="view_hr_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.tree</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="doctor_id"/>
+                <field name="birthdate"/>
+                <field name="gender"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="visit_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Patient: form -->
+    <record id="view_hr_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.form</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="action"
+                                name="%(action_hr_hospital_visit)d"
+                                class="oe_stat_button"
+                                icon="fa-calendar"
+                                context="{'search_default_patient_id': id, 'default_patient_id': id}">
+                            <field name="visit_count" string="Visits"/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="birthdate"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="disease_ids" widget="many2many_tags"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Visits">
+                            <field name="visit_ids" context="{'default_patient_id': id, 'default_doctor_id': doctor_id}">
+                                <list>
+                                    <field name="visit_datetime"/>
+                                    <field name="doctor_id"/>
+                                    <field name="disease_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
